@@ -9,13 +9,9 @@ interface ColorPickerProps {
 function ColorPicker({ setColor, color }: ColorPickerProps) {
     const ref = useRef<null>(null);
     const colorPicker = useRef<iro.ColorPicker | null>(null);
-    const effectRan = useRef(false);
     useEffect(() => {
         if (!ref.current) return;
-        const env = process.env.NODE_ENV;
-        const isDev = env === "development";
 
-        // if (!isDev&&effectRan.current === true) {
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             const cp = (colorPicker.current = new iro.ColorPicker(ref.current, {
@@ -42,10 +38,7 @@ function ColorPicker({ setColor, color }: ColorPickerProps) {
             cp.on("input:end", (color: any) => {
                 if (setColor) setColor?.(color.hexString);
             });
-        // }
-        // return () => {
-        //     effectRan.current = true;
-        // };
+        
     }, []);
     colorPicker.current?.color?.set(color as string);
     return <div className="color-picker-container" ref={ref} />;
