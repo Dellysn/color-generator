@@ -17,6 +17,7 @@ const HomePage = () => {
 
   useEffect(() => {
         setColor(colors[activeColor]);
+        document.title = `On-Kolors | ${colors[activeColor]}`;
     document.querySelector("body")!.style.backgroundColor = colors[activeColor];
   }, [colors]);
   
