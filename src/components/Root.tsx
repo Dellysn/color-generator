@@ -3,27 +3,22 @@ import Footer from "./Footer";
 import Navbar from "./Navbar";
 import "./navbar.css";
 
-const Root = ({ color }: any) => {
-  return (
-    <div
-    //   style={{
-    //     border: "1px solid #ccc",
-    //   }}
-    // className="color-box"
-    >
-      <Navbar />
+const Root = () => {
+    return (
+        <div>
+            <Navbar />
 
-      <div
-        style={{
-          marginTop: "4rem",
-        }}
-      >
-      <Outlet />
-      </div>
+            <div
+                style={{
+                    marginTop: "4rem",
+                }}
+            >
+                <Outlet />
+            </div>
 
-      <Footer />
-    </div>
-  );
+            <Footer />
+        </div>
+    );
 };
 
 export default Root;
