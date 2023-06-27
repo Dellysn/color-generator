@@ -5,13 +5,15 @@ import { generateColors } from "../utils";
 
 const HomePage = () => {
   const [color, setColor] = React.useState("#fff");
-  const [activeColor, setActiveColor] = React.useState(0);
+  const [activeColor, setActiveColor] = React.useState(6);
   const [showColorInfo, setShowColorInfo] = React.useState(false);
   const baseColor = color;
   const colors = generateColors(baseColor);
 
   useEffect(() => {
-    document.querySelector("body")!.style.backgroundColor = colors[6];
+
+        setColor(colors[activeColor]);
+    document.querySelector("body")!.style.backgroundColor = colors[activeColor];
   }, [colors]);
   return (
     <div>
@@ -21,7 +23,7 @@ const HomePage = () => {
           <h4
             className="color-presets-header"
             style={{
-              color: colors[6],
+              color: colors[1],
             }}
           >
             Color Presets
@@ -54,6 +56,7 @@ const HomePage = () => {
       <div className="stack">
         <div className="group">
           <label htmlFor="toggle-color-info" className="toggle-color-info">
+           <span className="checkmark"></span>
             <input
               id="toggle-color-info"
               type="checkbox"
@@ -62,7 +65,7 @@ const HomePage = () => {
             />
             {showColorInfo ? "Hide" : "Show"} Color Info
           </label>
-          <span className="checkmark"></span>
+          
         </div>
         <div className="colors">
           {colors.map((color) => (
