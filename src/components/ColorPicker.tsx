@@ -12,8 +12,10 @@ function ColorPicker({ setColor, color }: ColorPickerProps) {
     const effectRan = useRef(false);
     useEffect(() => {
         if (!ref.current) return;
+        const env = process.env.NODE_ENV;
+        const isDev = env === "development";
 
-        if (effectRan.current === true) {
+        if (!isDev&&effectRan.current === true) {
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             const cp = (colorPicker.current = new iro.ColorPicker(ref.current, {
