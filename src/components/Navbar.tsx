@@ -7,7 +7,7 @@ function Navbar({color}:{color:string}) {
                 color:color,
                 backgroundColor:color==='white'?'black':''
             }}
-            >On-Colos</h2>
+            >On-Kolors</h2>
             <ul className={"navbar-links"}>
                 <li>
                     <a href="https://github.com/Dellysn/color-generator.git">
