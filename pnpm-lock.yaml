@@ -14,9 +14,6 @@ dependencies:
   '@types/node':
     specifier: ^20.3.2
     version: 20.3.2
-  '@vanilla-extract/css':
-    specifier: ^1.11.1
-    version: 1.11.1
   '@vanilla-extract/vite-plugin':
     specifier: ^3.8.2
     version: 3.8.2(@types/node@20.3.2)(vite@4.3.9)

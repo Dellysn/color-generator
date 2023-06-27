@@ -8,7 +8,7 @@ interface ColorPickerProps {
 
 function ColorPicker({ setColor, color }: ColorPickerProps) {
     const ref = useRef<null>(null);
-    const colorPicker = useRef<null>(null);
+    const colorPicker = useRef<iro.ColorPicker | null>(null);
     const effectRan = useRef(false);
     useEffect(() => {
         if (!ref.current) return;
@@ -46,7 +46,7 @@ function ColorPicker({ setColor, color }: ColorPickerProps) {
         };
     }, []);
     console.log(colorPicker.current);
-    colorPicker.current?.color?.set(color);
+    colorPicker.current?.color?.set(color as string);
     return <div className="color-picker-container" ref={ref} />;
 }
 export default ColorPicker;

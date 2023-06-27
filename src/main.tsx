@@ -1,21 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
-import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "./pages/home.tsx";
-import Root from "./components/Root.tsx";
-
+import "./styles/app.css";
+import "./styles/footer.css";
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Root />,
-    children: [
-      {
-        path: "/",
+   
+       path: "/",
         element: <HomePage />,
-      },
-    ],
+      
+    
   },
 ]);
 
