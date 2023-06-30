@@ -7,40 +7,39 @@ interface ColorPickerProps {
 }
 
 function ColorPicker({ setColor, color }: ColorPickerProps) {
-    const ref = useRef<null>(null);
-    const colorPicker = useRef<iro.ColorPicker | null>(null);
+    const colorPickerElRef = useRef<HTMLDivElement | null>(null);
+    const colorPickerRef = useRef<iro.ColorPicker | null>(null);
     useEffect(() => {
-        if (!ref.current) return;
-
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            const cp = (colorPicker.current = new iro.ColorPicker(ref.current, {
-                width: 250,
-                color,
-                borderWidth: 1,
-                borderColor: "#fff",
-                layout: [
-                    {
-                        component: iro.ui.Box,
-                    },
-                    {
-                        component: iro.ui.Slider,
-                        options: {
-                            id: "hue-slider",
-                            sliderType: "hue",
+    
+                const container = document.createElement("div");
+                container.id = "color-picker-container";
+                colorPickerElRef.current?.appendChild(container);
+                colorPickerRef.current =  iro.ColorPicker(container, {
+                    width: 250,
+                    color,
+                    borderWidth: 1,
+                    borderColor: "#fff",
+                    layout: [
+                        {
+                            component: iro.ui.Box,
                         },
-                    },
-                ],
-            }) as any);
-            cp.on("input:change", (color: any) => {
-                if (setColor) setColor?.(color.hexString);
-            });
-            cp.on("input:end", (color: any) => {
-                if (setColor) setColor?.(color.hexString);
-            });
-        
-    }, []);
-    colorPicker.current?.color?.set(color as string);
-    return <div className="color-picker-container" ref={ref} />;
+                        {
+                            component: iro.ui.Slider,
+                            options: {
+                                id: "hue-slider",
+                                sliderType: "hue",
+                            },
+                        },
+                    ],
+                }) ;
+                colorPickerRef.current.on("input:change", (color: any) => {
+                    if (setColor) setColor?.(color.hexString);
+                }
+                );
+    }, [ ]);
+
+    colorPickerRef.current?.color?.set(color as string);
+    return <div ref={colorPickerElRef} />;
 }
 export default ColorPicker;
+
